@@ -4,12 +4,11 @@ from django.contrib.auth.models import User
 class Coach(models.Model):
     
     SEX_TYPES = {
-        ('M','Masculin'),
-        ('F','Feminin'),
-        ('P','Personnalisé')
+        ('M','Male'),
+        ('F','Female'),
+        ('P','Other')
     }
     name = models.CharField(max_length=128)
-    firstname = models.CharField(max_length=128)
     email = models.EmailField()
     phone = models.CharField(max_length=128)
     address = models.CharField(max_length=128)
@@ -19,6 +18,7 @@ class Coach(models.Model):
     city = models.CharField(max_length=32)
     zip_code = models.CharField(max_length=16)
     created_date = models.DateTimeField(auto_now_add=True)
+    save_by = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
 
     class Meta:
         verbose_name = "Coach"
@@ -30,12 +30,11 @@ class Coach(models.Model):
 class Customer(models.Model):
     
     SEX_TYPES = {
-        ('M','Masculin'),
-        ('F','Feminin'),
-        ('P','Personnalisé')
+        ('M','Male'),
+        ('F','Female'),
+        ('P','Other')
     }
     name = models.CharField(max_length=128)
-    firstname = models.CharField(max_length=128)
     email = models.EmailField()
     phone = models.CharField(max_length=128)
     address = models.CharField(max_length=128)
