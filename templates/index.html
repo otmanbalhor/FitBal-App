@@ -7,7 +7,7 @@
 <br><br>
 
 <div class="row d-flex justify-content-center">
-    <a href="#" class="btn col-md-3 btn-outline-secondary">
+    <a href="{% url 'add-invoice' %}" class="btn col-md-3 btn-outline-secondary">
         Register a new invoice <span class="badge text-bg-secondary"></span>
     </a>
 
@@ -46,7 +46,7 @@
                 <th scope="row">{{ invoice.pk }}</th>
                 <td>{{invoice.customer.name}}</td>
                 <td>{{invoice.invoice_datetime}}</td>
-                <td>{{invoice.get_total }}</td>
+                <td>{{invoice.total }}</td>
                 <td>
                     {% if invoice.paid %}
                     <img src="{% static 'images/crois_verte.svg' %}" alt="True">

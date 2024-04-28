@@ -4,5 +4,75 @@
 
 <br><br><br>
 
-<h1 class="text-capitalize text-center text-bold text-grey-500 mt-2"> Register a new invoice </h1>
+<h1 class="text-capitalize text-center text-bold mt-2"> Register a new invoice </h1>
+<form method="post">
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="customer">Customer</label>
+            <select name="customer" class="form-control" id="customer">
+                <option> Choose the customer </option>
+                {% for customer in customers %}
+                <option value="{{customer.id}}">{{forloop.counter}} - {{customer.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div id="wrapper">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="sub">Subscription 1</label>
+                <select name="sub" class="form-control" id="customer">
+                    <option> Choose the invoice type ... </option>
+                    <option value="S">STANDARD</option>
+                    <option value="P">PREMIUM</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label for="quantity-1"> Quantity </label>
+                <input min="1" step="1" type="number" name="quantity" id="quantity-1" class="form-control" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="unit-1"> Unit Price </label>
+                <input min="1" step="0.01" type="number" onchange="handleChangeSingleSub(this.id)" name="unit" id="unit-1" class="form-control" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="total-sub-1"> Total </label>
+                <input min="1" step="0.1" readonly type="number" name="total-sub" id="total-sub-1" class="form-control" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="total"> Total </label>
+            <input value="0" type="number" name="total" readonly id="total" step="0.1" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="comment">Comments</label>
+            <textarea class="form-control" name="comment" id="comment" cols="30" rows="1"></textarea>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button type="submit"  class="btn btn-primary d-flex justify-content-center">Save</button>
+    </div>
+    
+
+</form>
+<br><br>
+
+<div class="row d-flex justify-content-center">
+    <button id="btn-add" class="btn btn-outline-success mr-1 w-50 col-md-5"> Add a new subscription </button>
+    <button id="btn-remove" class="btn btn-outline-danger w-50 col-md-5"> Remove last subscription </button>
+</div>
+
+<script src="../static/js/addsub.js" type="text/javascript" defer></script>
+
 {% endblock content  %}
+
