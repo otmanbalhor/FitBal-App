@@ -29,6 +29,34 @@ class HomeView(View):
         invoices = Invoice.objects.select_related('customer','save_by').all()
         context = {'invoices':invoices}
         
+        if request.POST.get('id_modified'):
+            
+            paid = request.POST.get('modified')
+            
+            try:
+                item = Invoice.objects.get(id=request.POST.get('id_modified'))
+                if paid == 'True':
+                    item.paid = True
+                else:
+                    item.paid = False
+                item.save()
+                messages.success(request, 'Change made successfully')
+            except Exception as e:
+                messages.error(request, f"Sorry, the following error has occured : {e}")
+        
+        
+        if request.POST.get('id_supprimer'):
+            
+            try:
+                item = Invoice.objects.get(id=request.POST.get('id_supprimer'))
+                
+                item.delete()
+                
+                messages.success(request, 'The invoice has been deleted successfully.')
+                
+            except Exception as e:
+                messages.error(request, f"Sorry, the following error has occured : {e} ")
+        
         items = pagination(request,invoices)
         context['invoices'] = items
         return render(request, self.templates_name, context) 

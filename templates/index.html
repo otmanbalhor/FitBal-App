@@ -83,9 +83,9 @@
 <div class="modal fade" id="modifier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content bg-primary">
             <div class="modal-header">
-                <h5 class="modal-title text-dark text-center" id="exampleModalLabel">Modification</h5>
+                <h5 class="modal-title text-light text-center" id="exampleModalLabel">Modification</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -96,19 +96,19 @@
 
                     <input name="id_modified" type="hidden" id="id_modified">
 
-                    <label id="label_id" class="text-dark checkbox-inline"> <strong id="strong_id"> This bill has been
+                    <label id="label_id" class="text-light checkbox-inline"> <strong id="strong_id"> This bill has been
                             paid?</strong></label>
 
-                    <input type="radio" id="html" name="modified" value="True">
-                    <label class="text-white bg-primary" for="html">Yes</label>
+                    <input type="radio" id="yes" name="modified" value="True">
+                    <label class="text-light bg-primary" for="yes">Yes</label>
 
-                    <input type="radio" id="css" name="modified" value="False">
-                    <label class="text-white bg-danger" for="css">No</label><br>
+                    <input type="radio" id="no" name="modified" value="False">
+                    <label class="text-light bg-danger" for="no">No</label><br>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-success">Save</button>
                 </div>
             </form>
         </div>
@@ -129,9 +129,9 @@
                 <form method="post">
                     {% csrf_token %}
                     <input name="id_supprimer" type="hidden" id="id_supprimer">
+                    
                     <label id="label_id_s" class="text-light checkbox-inline"> <strong id="strong_id_s">Are you sure you
-                            want to delete the invoice ?</strong></label>
-
+                            want to delete the invoice of <span id="customer_name"></span>?</strong></label>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-outline-danger">Delete</button>
@@ -192,6 +192,7 @@
         let invoice_id = $(this).data('id');
         let customer = $(this).data('customer');
         $('#id_supprimer').val(invoice_id);
+        $('#customer_name').text(customer);
 
     })
 
@@ -199,14 +200,16 @@
 
 <script>
 
-    $(document).ready(()=> {
-        $("#search").on("keyup",()=> {
+    $(document).ready(function () {
+        $("#search").on("keyup", function () {
             let value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(()=> {
-                $(this).toggle($(this).text().toLocaleLowerCase().indexOf(value) > -1)
+            $("#myTable tr").each(function () {
+                let text = $(this).text().toLowerCase();
+                $(this).toggle(text.indexOf(value) > -1);
             });
         });
     });
+    
 
 </script>
 
