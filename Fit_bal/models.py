@@ -73,7 +73,7 @@ class Invoice(models.Model):
     def get_total(self):
         subs = self.sub_set.all()
         total = sum(sub.get_total for sub in subs)
-        
+        return total
     
 
 class Sub(models.Model):
@@ -96,3 +96,4 @@ class Sub(models.Model):
     @property
     def get_total(self):
         total = self.quantity * self.unit_price
+        return total

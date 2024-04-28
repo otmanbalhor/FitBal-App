@@ -4,7 +4,7 @@
 
 <br><br><br>
 
-<h1 class="text-capitalize text-center text-bold mt-2"> Register a new invoice </h1>
+<h1 class="text-capitalize text-center text-bold text-grey-500 fw-bold"> Register a new invoice </h1>
 <form method="post">
     {% csrf_token %}
 
@@ -60,17 +60,22 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        <button type="submit"  class="btn btn-primary d-flex justify-content-center">Save</button>
+        <button type="submit"  class="btn btn-outline-light d-flex justify-content-center">Save</button>
     </div>
     
 
 </form>
 <br><br>
 
-<div class="row d-flex justify-content-center">
-    <button id="btn-add" class="btn btn-outline-success mr-1 w-50 col-md-5"> Add a new subscription </button>
-    <button id="btn-remove" class="btn btn-outline-danger w-50 col-md-5"> Remove last subscription </button>
+<div class="row justify-content-center mb-3">
+    <div class="col-md-4 mr-1">
+        <button id="btn-add" class="btn btn-outline-success w-100">Add a new subscription</button>
+    </div>
+    <div class="col-md-4 ml-1">
+        <button id="btn-remove" class="btn btn-outline-danger w-100">Remove last subscription</button>
+    </div>
 </div>
+
 
 <script src="../static/js/addsub.js" type="text/javascript" defer></script>
 

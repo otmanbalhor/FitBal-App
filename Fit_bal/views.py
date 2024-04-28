@@ -4,6 +4,8 @@ from .models import *
 from django.contrib import messages
 from django.db import transaction
 
+from .utils import pagination
+
 # Create your views here.
 
 class HomeView(View):
@@ -15,12 +17,20 @@ class HomeView(View):
         context = {
             'invoices':invoices
             }
+        
+        items = pagination(request,invoices)
+        context['invoices'] = items
+        
         return render(request, self.templates_name,context)
     
+
     def post(self, request, *args, **kwargs):
         
         invoices = Invoice.objects.select_related('customer','save_by').all()
         context = {'invoices':invoices}
+        
+        items = pagination(request,invoices)
+        context['invoices'] = items
         return render(request, self.templates_name, context) 
     
 
@@ -124,11 +134,11 @@ class AddInvoiceView(View):
             
             subTypes = request.POST.get('sub')
             
-            quantities = request.POST.get('quantity')
+            quantities = request.POST.getlist('quantity')
             
-            units = request.POST.get('unit')
+            units = request.POST.getlist('unit')
             
-            totalSubs = request.POST.get('total-sub')
+            totalSubs = request.POST.getlist('total-sub')
             
             total = request.POST.get('total')
             
