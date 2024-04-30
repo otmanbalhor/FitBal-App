@@ -33,7 +33,7 @@ class Customer(models.Model):
         ('M','Male'),
         ('F','Female'),
         ('P','Other')
-    }
+    } 
     name = models.CharField(max_length=128)
     email = models.EmailField()
     phone = models.CharField(max_length=128)
@@ -97,3 +97,40 @@ class Sub(models.Model):
     def get_total(self):
         total = self.quantity * self.unit_price
         return total
+    
+
+class Usermodel(models.Model):
+    SEX_TYPES = {
+        ('M','Male'),
+        ('F','Female'),
+        ('P','Other')
+    } 
+    
+    MONTH_LIST = {
+        ('Jan','January'),
+        ('Feb','February'),
+        ('Mar','March'),
+        ('Apr','April'),
+        ('May','May'),
+        ('Jun','June'),
+        ('Jul','July'),
+        ('Aug','August'),
+        ('Sep','September'),
+        ('Oct','October'),
+        ('Nov','November'),
+        ('Dec','December')
+    }
+    
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    sex = models.CharField(max_length=1, choices= SEX_TYPES)
+    phone = models.CharField(max_length=128)
+    day = models.IntegerField()
+    month = models.CharField(max_length=3, choices= MONTH_LIST)
+    year = models.IntegerField()
+    address = models.CharField(max_length=128)
+    num_address = models.IntegerField()
+    zip_code = models.CharField(max_length=16)
+    city = models.CharField(max_length=32)
+    created_date = models.DateTimeField(auto_now_add=True)
+    save_by = models.ForeignKey(User, on_delete=models.PROTECT)

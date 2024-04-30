@@ -2,18 +2,28 @@ from django.shortcuts import render
 from django.views import View
 from .models import *
 from django.contrib import messages
+from django.http import HttpResponse
+from .form import CustomUserCreationForm
+import pdfkit 
+from django.template.loader import get_template
 from django.db import transaction
+from django.contrib.auth.decorators import login_required
+import datetime
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .utils import pagination
+
+from .decorators import *
+
+from .utils import pagination, get_invoice
 
 # Create your views here.
 
-class HomeView(View):
+class HomeView(LoginRequiredSuperuserMixin,View):
     templates_name = 'index.html'
     
     def get(self, request, *args, **kwargs):
         
-        invoices = Invoice.objects.select_related('customer','save_by').all()
+        invoices = Invoice.objects.select_related('customer','save_by').all().order_by('-invoice_datetime')
         context = {
             'invoices':invoices
             }
@@ -62,7 +72,7 @@ class HomeView(View):
         return render(request, self.templates_name, context) 
     
 
-class AddCoachView(View):
+class AddCoachView(LoginRequiredSuperuserMixin,View):
      
     templates_name = 'add_coach.html'
      
@@ -101,7 +111,7 @@ class AddCoachView(View):
     
     
 
-class AddCustomerView(View):
+class AddCustomerView( LoginRequiredSuperuserMixin, View):
      
     templates_name = 'add_customer.html'
      
@@ -138,7 +148,7 @@ class AddCustomerView(View):
         return render(request, self.templates_name)
     
     
-class AddInvoiceView(View):
+class AddInvoiceView(LoginRequiredSuperuserMixin,View):
      
     templates_name = 'add_invoice.html'
      
@@ -204,3 +214,59 @@ class AddInvoiceView(View):
             messages.error(request,f"sorry our system is detecting the following issues : {e}.")
         
         return render(request, self.templates_name)
+    
+
+class InvoiceVisualizationView(LoginRequiredSuperuserMixin,View):
+    
+    template_name = 'invoice.html'
+    
+    def get(self, request, *args, **kwargs):
+        
+        pk = kwargs.get('pk')
+        
+        context = get_invoice(pk)
+        
+        return render(request, self.template_name, context)
+    
+@superuser_required   
+def get_invoice_pdf(request, *args, **kwargs):
+    
+    pk = kwargs.get('pk')
+    
+    context = get_invoice(pk)
+    
+    context['date'] = datetime.datetime.today()
+    
+    template = get_template('invoice_pdf.html')
+    
+    html = template.render(context)
+    
+    # option of pdf format
+    
+    options = {
+        'page-size': 'Letter',
+        'encoding': 'UTF-8',
+        'enable-local-file-access':"",
+    }
+    
+    # generate pdf
+    
+    pdf = pdfkit.from_string(html, False, options)
+    
+    response = HttpResponse(pdf, content_type='application/pdf')
+   
+    response['Content-Disposition'] = "attachement"
+    
+    return response
+    
+    
+    
+def inscription(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'inscription.html',{'form':form})

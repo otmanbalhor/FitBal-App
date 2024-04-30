@@ -55,7 +55,7 @@
                     {% endif %}
                 </td>
                 <td>
-                    <a href="/" title="Detail" class="badge text-white bg-success text-decoration-none">View</a>
+                    <a href="{% url 'view-invoice' pk=invoice.pk %}" title="Detail" class="badge text-white bg-success text-decoration-none">View</a>
 
                     <button id="btn-invoice-sup" type="button" data-toggle="modal" data-target="#supprimer"
                         class="badge text-white bg-danger" title="Supprimer" data-id="{{ invoice.pk }}"
@@ -96,11 +96,10 @@
 
                     <input name="id_modified" type="hidden" id="id_modified">
 
-                    <label id="label_id" class="text-light checkbox-inline"> <strong id="strong_id"> This bill has been
-                            paid?</strong></label>
+                    <label id="label_id" class="text-light checkbox-inline"> <strong id="strong_id"> This bill has been paid?</strong></label>
 
                     <input type="radio" id="yes" name="modified" value="True">
-                    <label class="text-light bg-primary" for="yes">Yes</label>
+                    <label class="text-light bg-success" for="yes">Yes</label>
 
                     <input type="radio" id="no" name="modified" value="False">
                     <label class="text-light bg-danger" for="no">No</label><br>

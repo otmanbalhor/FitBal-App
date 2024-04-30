@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<h1 class="text-capitalize text-center text-bold text-grey-500 fw-bold"> SIGN UP </h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_name">Name and Surname:</label>
+            <div>
+                {{ form.name }}
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_email">Email:</label>
+            <div>
+                {{ form.email }}
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_sex">Sex:</label>
+            <div>
+                {{ form.sex }}
+            </div>
+        </div>
+    </div>
+    <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-4">
+            <label for="id_password1">Password:</label>
+            <div>
+                {{ form.password1 }}
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_password2">Password confirmation:</label>
+            <div>
+                {{ form.password2 }}
+            </div>
+        </div>
+    </div>
+    <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-4">
+            <label for="id_phone">Phone:</label>
+            <div>
+                {{ form.phone }}
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="id_name">Address:</label>
+            <div>
+                {{ form.address }}
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_email">Numero:</label>
+            <div>
+                {{ form.numero }}
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_sex">Zip Code:</label>
+            <div>
+                {{ form.zip_code }}
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_name">City:</label>
+            <div>
+                {{ form.city }}
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="d-flex justify-content-center">
+        <button type="submit"  class="btn btn-outline-light d-flex justify-content-center">Sign in</button>
+    </div>
+</form>
+
+
+
+{% endblock content %}

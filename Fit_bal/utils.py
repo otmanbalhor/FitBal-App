@@ -1,5 +1,7 @@
 from django.core.paginator import (Paginator, EmptyPage, PageNotAnInteger)
 
+from .models import *
+
 def pagination(request, invoices):
     default_page = 1
         
@@ -21,3 +23,17 @@ def pagination(request, invoices):
         items_page = paginator.page(paginator.num_pages)
             
     return items_page
+
+def get_invoice(pk):
+    
+        
+    obj = Invoice.objects.get(pk=pk)
+        
+    subs = obj.sub_set.all()
+        
+    context = {
+            'obj':obj,
+            'subs':subs
+        }
+    
+    return context
