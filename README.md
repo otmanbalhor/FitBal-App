@@ -1,5 +1,5 @@
 # Fit Bal App 🚀 (en cours de développement)
-Une application pour des personnes cherchant un coach sportif pour atteindre leurs objectifs.
+Une application pour sportifs qui cherchent à trouver des coachs.
 
 ## Informations du Projet 🤝
 Durée : en cours
