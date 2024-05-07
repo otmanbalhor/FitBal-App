@@ -12,12 +12,10 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-
     <header>
         <nav class="navbar navbar-expand-lg bg-primary">
             <a class="navbar-brand text-light ml-2 fw-bold fs-3" href="/">FITBAL</a>
-            <button class="navbar-toggler text-light navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler text-light navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -34,7 +32,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Your profile</a>
                             <a class="dropdown-item" href="#">Yours invoices</a>
-                            <a class="dropdown-item" href="troll.html">Your sub type</a>
+                            <a class="dropdown-item" href="#">Your sub type</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -61,10 +59,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown"
-                            aria-expanded="false">
-                            Languages
-                        </a>
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown" aria-expanded="false">Languages</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">🇬🇧 English</a>
                             <a class="dropdown-item" href="#">🇫🇷 French</a>
@@ -79,10 +74,10 @@
         </nav>
     </header>
 
-    <div class="container flex-grow-1">
+    <div class="container mt-2 flex-grow-1">
         <div class="wrapper">
             {% for message in messages %}
-            <div class="alert{{message.tags}} alert-dismissible" role="alert">
+            <div class="alert {{message.tags}} alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -100,18 +95,13 @@
         </div>
     </div>
 
-    <!--footer-->
-
     <footer class="bg-primary text-center text-light mt-auto">
 
-        <!--copyright-->
         <div class="text-center p-3">
             FITBAL © 2024 copyright:
             <a class="text-decoration-none" href="https://github.com/otmanbalhor/FitBal-App">The repository</a>
         </div>
-        <!--endcopyright-->
     </footer>
-    <!--endfooter-->
 
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
