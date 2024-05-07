@@ -56,12 +56,27 @@ Possibilité pour un client ou un coach de s'inscrire sur le plateforme et de se
 * Support multilingue (français - anglais).
 
 ## Comment Utiliser ❓
-* Clonez ce repository sur votre machine locale.
-* Supprimez les fichiers `0001_initial.py`,`0001_initial.cpython-310.pyc.` et `db.sqlite`.
-* Exécutez `python3 ./manage.py makemigrations` puis `python3 ./manage.py migrate` dans votre terminal Ubuntu.
-* Créez votre super utilisateur avec `python3 ./manage.py createsuperuser` dans votre terminal.
-* Lancez le serveur avec `python3 ./manage.py runserver` et cliquez sur l'adresse affichée (CTRL + clic).
-* Connectez-vous avec le nom d'utilisateur et le mot de passe que vous avez créés pour le super utilisateur.
+
+1. Cloner le projet
+`git clone https://github.com/donaldte/django-invoice.git`
+
+2. Accéder au répertoire django-invoice
+`cd django-invoice`
+
+3. Créer un environnement virtuel
+`python3.9 -m venv venv`
+
+4. Activer l'environnement virtuel
+* Utilisateurs Linux/mac
+`source venv/bin/activate`
+*Utilisateurs Windows
+`venv\Scripts\activate`
+
+5. Installer les dépendances
+`pip install -r requirements.txt`
+
+6. Lancer le serveur local
+`python manage.py runserver`
 
 ## Objectifs d'apprentissage 🎯
 * Consolidation des connaissances en Python et Django.
