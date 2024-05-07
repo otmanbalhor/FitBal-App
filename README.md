@@ -67,8 +67,10 @@ Possibilité pour un client ou un coach de s'inscrire sur le plateforme et de se
 `python3.9 -m venv venv`
 
 4. Activer l'environnement virtuel
+   
 * Utilisateurs Linux/mac
 `source venv/bin/activate`
+
 *Utilisateurs Windows
 `venv\Scripts\activate`
 
