@@ -29,6 +29,9 @@ Visualisation des factures sous forme d'un tableau:
 Possibilité de changer l'état de la facture:
 ![Sans titre](https://github.com/otmanbalhor/FitBal-App/assets/151409181/3583e239-45aa-4ed1-8c22-6cce7673dfe2)
 
+Possibilité de supprimer une facture:
+![Sans titre](https://github.com/otmanbalhor/FitBal-App/assets/151409181/77c4b071-4469-4015-8516-d49c8ab2aaa7)
+
 Possibilité de visualiser la facture précise en détail:
 ![Sans titre](https://github.com/otmanbalhor/FitBal-App/assets/151409181/0667b833-3cfc-45df-b983-b9d64137d3b1)
 
