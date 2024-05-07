@@ -57,7 +57,7 @@ Possibilité pour un client ou un coach de s'inscrire sur le plateforme et de se
 
 ## Comment Utiliser ❓
 * Clonez ce repository sur votre machine locale.
-* Supprimez les fichiers `0001_initial.py` et `0001_initial.cpython-310.pyc.`
+* Supprimez les fichiers `0001_initial.py`,`0001_initial.cpython-310.pyc.` et `db.sqlite`.
 * Exécutez `python3 ./manage.py makemigrations` puis `python3 ./manage.py migrate` dans votre terminal Ubuntu.
 * Créez votre super utilisateur avec `python3 ./manage.py createsuperuser` dans votre terminal.
 * Lancez le serveur avec `python3 ./manage.py runserver` et cliquez sur l'adresse affichée (CTRL + clic).
