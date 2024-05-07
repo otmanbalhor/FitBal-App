@@ -71,7 +71,7 @@ Possibilité pour un client ou un coach de s'inscrire sur le plateforme et de se
 * Utilisateurs Linux/mac
 `source venv/bin/activate`
 
-*Utilisateurs Windows
+* Utilisateurs Windows
 `venv\Scripts\activate`
 
 5. Installer les dépendances
