@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 from .models import *
 
 
@@ -10,15 +11,10 @@ class AdminCoach(admin.ModelAdmin):
     
 class AdminInvoice(admin.ModelAdmin):
     list_display = ('customer','save_by','invoice_datetime','total','last_updated_date','paid')
-    
-class AdminUsermodel(admin.ModelAdmin):
-    list_display = ('name','email','sex','phone','day','month','year','address','num_address','zip_code','city')
-    
-#class AdminSub(admin.ModelAdmin):
- #   list_display = ('invoice','name','quantity','unit_price','total')
-    
+  
+
+
 admin.site.register(Customer, AdminCustomer)
 admin.site.register(Coach, AdminCoach)
 admin.site.register(Invoice, AdminInvoice)
-admin.site.register(Usermodel, AdminUsermodel)
 admin.site.register(Sub)

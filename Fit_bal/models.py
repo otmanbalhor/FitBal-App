@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Coach(models.Model):
     
     SEX_TYPES = {
         ('M','Male'),
         ('F','Female'),
-        ('P','Other')
+        ('O','Other')
     }
     name = models.CharField(max_length=128)
     email = models.EmailField()
@@ -32,7 +33,7 @@ class Customer(models.Model):
     SEX_TYPES = {
         ('M','Male'),
         ('F','Female'),
-        ('P','Other')
+        ('O','Other')
     } 
     name = models.CharField(max_length=128)
     email = models.EmailField()
@@ -98,39 +99,46 @@ class Sub(models.Model):
         total = self.quantity * self.unit_price
         return total
     
+class UserProfile(models.Model):
 
-class Usermodel(models.Model):
     SEX_TYPES = {
         ('M','Male'),
         ('F','Female'),
-        ('P','Other')
+        ('O','Other')
     } 
     
     MONTH_LIST = {
-        ('Jan','January'),
-        ('Feb','February'),
-        ('Mar','March'),
-        ('Apr','April'),
-        ('May','May'),
-        ('Jun','June'),
-        ('Jul','July'),
-        ('Aug','August'),
-        ('Sep','September'),
-        ('Oct','October'),
-        ('Nov','November'),
-        ('Dec','December')
+        (1,'January'),
+        (2,'February'),
+        (3,'March'),
+        (4,'April'),
+        (5,'May'),
+        (6,'June'),
+        (7,'July'),
+        (8,'August'),
+        (9,'September'),
+        (10,'October'),
+        (11,'November'),
+        (12,'December')
     }
     
-    name = models.CharField(max_length=50)
-    email = models.EmailField()
+    first_name= models.CharField(max_length=64)
+    last_name= models.CharField(max_length=64)
+    email = models.EmailField(unique=True)
+    username = models.CharField(max_length=128, unique=True)
     sex = models.CharField(max_length=1, choices= SEX_TYPES)
     phone = models.CharField(max_length=128)
     day = models.IntegerField()
-    month = models.CharField(max_length=3, choices= MONTH_LIST)
+    month = models.CharField(max_length=2, choices= MONTH_LIST)
     year = models.IntegerField()
     address = models.CharField(max_length=128)
     num_address = models.IntegerField()
     zip_code = models.CharField(max_length=16)
     city = models.CharField(max_length=32)
-    created_date = models.DateTimeField(auto_now_add=True)
-    save_by = models.ForeignKey(User, on_delete=models.PROTECT)
+    
+    class Meta:
+        verbose_name = 'register'
+        verbose_name_plural = 'registers'
+    
+    
+    

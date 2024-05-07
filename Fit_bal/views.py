@@ -1,22 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from .models import *
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.http import HttpResponse
-from .form import CustomUserCreationForm
 import pdfkit 
 from django.template.loader import get_template
 from django.db import transaction
 from django.contrib.auth.decorators import login_required
 import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 
 from .decorators import *
 
 from .utils import pagination, get_invoice
-
-# Create your views here.
 
 class HomeView(LoginRequiredSuperuserMixin,View):
     templates_name = 'index.html'
@@ -152,7 +150,6 @@ class AddInvoiceView(LoginRequiredSuperuserMixin,View):
      
     templates_name = 'add_invoice.html'
      
-    
     def get(self, request, *args, **kwargs):
         
         customers = Customer.objects.select_related('save_by').all()
@@ -260,13 +257,58 @@ def get_invoice_pdf(request, *args, **kwargs):
     return response
     
     
-    
-def inscription(request):
+def signUp(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'inscription.html',{'form':form})
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
+        email = request.POST['email']
+        username = request.POST['username']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        sex = request.POST['sex']
+        phone = request.POST['phone']
+        day = request.POST['day']
+        month = request.POST['month']
+        year = request.POST['year']
+        address = request.POST['address']
+        num_address = request.POST['num_address']
+        zip_code = request.POST['zip_code']
+        city = request.POST['city']
+        
+        if password1 != password2:
+            messages.error(request, "Passwords do not match.")
+            return redirect('signup')
+        
+        user = User.objects.create_user(first_name=first_name, last_name=last_name,email=email,username=username, password=password1)
+        
+        user.save()
+        
+        messages.success(request, "Account created successfully. You can now log in.")
+        
+        return redirect('login')
+
+    
+    return render(request, 'signup.html')
+    
+
+def login(request):
+
+    if request.method =="POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        
+        user = auth.authenticate(username=username, password=password)
+        
+        if user is not None:
+            auth.login(request,user)
+            return redirect('userpage')
+        else:
+            messages.error(request, "Invalid username or password.")
+    
+   
+    return render(request, 'login.html')
+
+
+def userpage(request):
+
+    return render(request, 'userpage.html')

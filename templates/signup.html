@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<h1 class="text-capitalize text-center text-bold text-grey-500 fw-bold"> SIGN UP </h1>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_name">First Name</label>
+            <div>
+                <input class="form-control" name="firstname" type="text" class='form-control' id='firstname' placeholder="First Name" required>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_name">Last Name</label>
+            <div>
+                <input class="form-control" name="lastname" type="text" class='form-control' id='lastname' placeholder="Last Name" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_email">Email:</label>
+            <div>
+                <input class="form-control" type="email" name="email" id="email" placeholder="E-mail" required>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_email">Username:</label>
+            <div>
+                <input class="form-control" type="text" name="username" id="username" placeholder="Username" required>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_sex">Sex:</label>
+            <div>
+                <select name="sex" class="form-control" id="sex" title="Select your gender">
+                    <option>Choose your gender :</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Other</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-4">
+            <label for="id_password1">Password:</label>
+            <div>
+                <input class="form-control" type="password" name="password1" id="password" placeholder="Password" required>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_password2">Password confirmation:</label>
+            <div>
+                <input class="form-control" type="password" name="password2" id="password2" placeholder="Password Confirmation" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-row d-flex justify-content-center">
+        <div class="form-group col-md-4">
+            <label for="id_phone">Phone:</label>
+            <div>
+                <input class="form-control" type="tel" name="phone" id="phone" placeholder="Phone Number" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="id_name">Day:</label>
+            <div>
+                <input class="form-control" type="number" name="day" id="day" placeholder="Day" required>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_name">Month:</label>
+            <div>
+                <select name="month" class="form-control" id="month" title="Select your month">
+                    <option>Choose the Month :</option>
+                    <option value="Jan">January</option>
+                    <option value="Feb">February</option>
+                    <option value="Mar">March</option>
+                    <option value="Apr">April</option>
+                    <option value="May">May</option>
+                    <option value="Jun">June</option>
+                    <option value="Jul">July</option>
+                    <option value="Aug">August</option>
+                    <option value="Sep">September</option>
+                    <option value="Oct">October</option>
+                    <option value="Nov">November</option>
+                    <option value="Dec">December</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_name">Year:</label>
+            <div>
+                <input class="form-control" type="number" name="year" id="year" placeholder="Year" required>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="id_name">Address:</label>
+            <div>
+                <input class="form-control" type="text" name="address" id="address" placeholder="Address" required>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_email">Numero:</label>
+            <div>
+                <input class="form-control" type="number" name="num_address" id="num_address" placeholder="Number" required>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_sex">Zip Code:</label>
+            <div>
+                <input class="form-control" type="text" name="zip_code" id="zip_code" placeholder="Zip Code" required>
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="id_name">City:</label>
+            <div>
+                <input class="form-control" type="text" name="city" id="city" placeholder="City" required>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-outline-light d-flex justify-content-center">Sign in</button>
+    </div>
+</form>
+
+
+
+{% endblock content %}
