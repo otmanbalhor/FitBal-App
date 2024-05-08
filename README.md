@@ -21,7 +21,7 @@ Formulaire pour enregistrer une facture:
 Possibilité d'ajouter plusieurs lignes avec des abonnements:
 ![Sans titre](https://github.com/otmanbalhor/FitBal-App/assets/151409181/0e25d817-257a-4868-b714-6c440341112a)
 
-Visualisation des factures sous forme d'un tableau: 
+Visualisation des factures sous forme d'un tableau: (page principale)
 ![Sans titre](https://github.com/otmanbalhor/FitBal-App/assets/151409181/5cf8c5ff-7feb-4fb3-b50d-cb2ba1cea27a)
 
 ![Sans titre](https://github.com/otmanbalhor/FitBal-App/assets/151409181/70b5ad6a-8774-47f5-b657-58b2eb9ab46d)
