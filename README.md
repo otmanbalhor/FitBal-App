@@ -81,7 +81,7 @@ Possibilité pour un client ou un coach de s'inscrire sur le plateforme et de se
 `pip install -r requirements.txt`
 
 6. Lancer le serveur local
-`python manage.py runserver`
+`python3 manage.py runserver`
 
 ## Objectifs d'apprentissage 🎯
 * Consolidation des connaissances en Python et Django.
