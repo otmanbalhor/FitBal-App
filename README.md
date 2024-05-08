@@ -86,4 +86,4 @@ Possibilité pour un client ou un coach de s'inscrire sur le plateforme et de se
 ## Objectifs d'apprentissage 🎯
 * Consolidation des connaissances en Python et Django.
 * Manipulation des bibliothèques Django et compréhension de la structure d'un projet Django.
-* Découverte et utilisation de Bootsrap lors de ce projet.
+* Découverte et utilisation de Bootstrap lors de ce projet.
