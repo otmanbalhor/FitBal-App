@@ -1,4 +1,4 @@
-# Fit Bal App 🚀 (en cours de développement)
+# Fit Bal App 🚀 (en cours de développement 🏗️) 
 Une application pour sportifs qui cherchent à trouver des coachs.
 
 ## Informations du Projet 🤝
@@ -52,7 +52,7 @@ Possibilité pour un client ou un coach de s'inscrire sur le plateforme et de se
 * Changement de l'état de la facture (payée ou non).
 * Visualisation de la facture avec les informations du client et téléchargement au format PDF.
 
-## Futures fonctionnalités 🛠️
+## Futures fonctionnalités 🚧
 * Création de profils pour les clients et les coachs avec une page dédiée.
 * Messagerie instantanée pour communiquer avec les coachs.
 * Liste des coachs disponibles avec une description de leurs spécialisations.
