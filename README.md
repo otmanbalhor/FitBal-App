@@ -61,10 +61,10 @@ Possibilité pour un client ou un coach de s'inscrire sur le plateforme et de se
 ## Comment Utiliser ❓
 
 1. Cloner le projet
-`git clone https://github.com/donaldte/django-invoice.git`
+`git clone git@github.com:otmanbalhor/FitBal-App.git`
 
-2. Accéder au répertoire django-invoice
-`cd django-invoice`
+2. Accéder au répertoire
+`cd FitBal-App`
 
 3. Créer un environnement virtuel
 `python3.9 -m venv venv`
