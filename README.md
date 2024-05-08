@@ -61,7 +61,7 @@ Possibilité pour un client ou un coach de s'inscrire sur le plateforme et de se
 ## Comment Utiliser ❓
 
 1. Cloner le projet
-`git clone git@github.com:otmanbalhor/FitBal-App.git`
+`git clone git@github.com:otmanbalhor/FitBal-App-Django-project-.git`
 
 2. Accéder au répertoire
 `cd FitBal-App`
